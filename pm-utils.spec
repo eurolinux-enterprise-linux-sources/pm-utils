@@ -1,8 +1,8 @@
 Name: pm-utils
-Summary: Power management utilities and scripts for Fedora
+Summary: Power management utilities and scripts
 License: GPLv2
 Version: 1.2.5
-Release: 9%{?dist}
+Release: 10%{?dist}
 Group: System Environment/Base
 URL: http://pm-utils.freedesktop.org
 %ifnarch s390 s390x
@@ -119,6 +119,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Jul 13 2012 Jaroslav Škarvada <jskarvad@redhat.com> - 1.2.5-10
+- Fixed summary
+  Resolves: rhbz#800630
+
 * Wed Jul 14 2010 Dan Williams <dcbw@redhat.com> - 1.2.5-9
 - Fix failures to tell NetworkManager to wake up (#610299)
 
