@@ -2,7 +2,7 @@ Name: pm-utils
 Summary: Power management utilities and scripts
 License: GPLv2
 Version: 1.2.5
-Release: 10%{?dist}.1
+Release: 11%{?dist}
 Group: System Environment/Base
 URL: http://pm-utils.freedesktop.org
 %ifnarch s390 s390x
@@ -26,7 +26,7 @@ Patch0: pm-utils-1.2.5-video-typo.patch
 Patch1: pm-utils-1.2.5-video-resume-nochvt.patch
 # Fix for NM resume failures (#610299)
 Patch2: pm-utils-nm-wakeup.patch
-# Add support for standby (#1094293)
+# Add support for standby (#1025006)
 Patch3: pm-utils-1.2.5-add-standby.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -122,9 +122,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Mon May  5 2014 Jaroslav Škarvada <jskarvad@redhat.com> - 1.2.5-10.1
+* Mon May  5 2014 Jaroslav Škarvada <jskarvad@redhat.com> - 1.2.5-11
 - Added support for standby
-  Resolves: rhbz#1094293
+  Resolves: rhbz#1025006
 - Fixed bogus dates in changelog (best effort)
 
 * Fri Jul 13 2012 Jaroslav Škarvada <jskarvad@redhat.com> - 1.2.5-10
