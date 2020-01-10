@@ -1,0 +1,55 @@
+.\"     Title: on_ac_power
+.\"    Author: Richard Hughes
+.\" Generator: DocBook XSL Stylesheets v1.73.2 <http://docbook.sf.net/>
+.\"      Date: 05 June, 2006
+.\"    Manual: 
+.\"    Source: 
+.\"
+.TH "ON_AC_POWER" "1" "05 June, 2006" "" ""
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.SH "NAME"
+on_ac_power \- test whether the computer is running on line power
+.SH "SYNOPSIS"
+.HP 12
+\fBon_ac_power\fR
+.SH "DESCRIPTION"
+.PP
+This manual page documents briefly the
+\fBon_ac_power\fR
+command\&.
+.PP
+\fBon_ac_power\fR
+is a command line program to test whether the computer is running on line power
+.SH "EXIT CODES"
+.PP
+The command succeeds (status 0) if the system is using line power and fails (status other than 0) otherwise\&. It is designed to be easy to use in shell scripts\&.
+.PP
+\fB0 (true)\fR
+.RS 4
+System is on line power\&.
+.RE
+.PP
+\fB1 (false)\fR
+.RS 4
+System is not on line power\&.
+.RE
+.SH "SEE ALSO"
+.PP
+
+\fBpm-suspend\fR(8)
+.SH "AUTHOR"
+.PP
+This manual page was written by Richard Hughes
+<richard@hughsie\&.com>\&.
+.SH "AUTHOR"
+.PP
+\fBRichard Hughes\fR
+.sp -1n
+.IP "" 4
+Author.
+.SH "COPYRIGHT"
+Copyright \(co 2006 Richard Hughes
+.br
