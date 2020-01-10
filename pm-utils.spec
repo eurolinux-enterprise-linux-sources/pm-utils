@@ -2,7 +2,7 @@ Name: pm-utils
 Summary: Power management utilities and scripts
 License: GPLv2
 Version: 1.2.5
-Release: 10%{?dist}
+Release: 10%{?dist}.1
 Group: System Environment/Base
 URL: http://pm-utils.freedesktop.org
 %ifnarch s390 s390x
@@ -26,6 +26,8 @@ Patch0: pm-utils-1.2.5-video-typo.patch
 Patch1: pm-utils-1.2.5-video-resume-nochvt.patch
 # Fix for NM resume failures (#610299)
 Patch2: pm-utils-nm-wakeup.patch
+# Add support for standby (#1094293)
+Patch3: pm-utils-1.2.5-add-standby.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -51,6 +53,7 @@ when building programs that use %{name}.
 %patch0 -p1 -b .video-typo
 %patch1 -p1 -b .video-resume-nochvt
 %patch2 -p1 -b .nm-wakeup
+%patch3 -p1 -b .add-standby
 
 %build
 %configure
@@ -119,6 +122,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon May  5 2014 Jaroslav Škarvada <jskarvad@redhat.com> - 1.2.5-10.1
+- Added support for standby
+  Resolves: rhbz#1094293
+- Fixed bogus dates in changelog (best effort)
+
 * Fri Jul 13 2012 Jaroslav Škarvada <jskarvad@redhat.com> - 1.2.5-10
 - Fixed summary
   Resolves: rhbz#800630
@@ -192,7 +200,7 @@ rm -rf $RPM_BUILD_ROOT
   and the front-end scripts will return a failure error code if hook-running
   was aborted.
 
-* Mon Jun 22 2008 Richard Hughes <rhughes@redhat.com> - 1.1.2.3-1
+* Sun Jun 22 2008 Richard Hughes <rhughes@redhat.com> - 1.1.2.3-1
 - Update to 1.1.2.3
 
 * Fri Jun 20 2008 Till Maas <opensource@till.name> - 1.1.2.2-2
@@ -204,13 +212,13 @@ rm -rf $RPM_BUILD_ROOT
   separate package now
 - substitute %%{__rm} macros for uniform macro usage
 
-* Mon May 29 2008 Richard Hughes <rhughes@redhat.com> - 1.1.2.2-1
+* Thu May 29 2008 Richard Hughes <rhughes@redhat.com> - 1.1.2.2-1
 - Update to 1.1.2.2
 
-* Mon May 28 2008 Richard Hughes <rhughes@redhat.com> - 1.1.2.1-2
+* Wed May 28 2008 Richard Hughes <rhughes@redhat.com> - 1.1.2.1-2
 - Change BR from docbook-utils to xmlto
 
-* Mon May 28 2008 Richard Hughes <rhughes@redhat.com> - 1.1.2.1-1
+* Wed May 28 2008 Richard Hughes <rhughes@redhat.com> - 1.1.2.1-1
 - Update to 1.1.2.1
 
 * Mon May 12 2008 Richard Hughes <rhughes@redhat.com> - 1.1.1-2
@@ -247,13 +255,13 @@ rm -rf $RPM_BUILD_ROOT
   already a newer version
 - remove unused BR: hal-devel, dbus-devel, pkgconfig, docbook-utils
 
-* Mon Apr  8 2008 Richard Hughes <rhughes@redhat.com> - 1.1.0-4
+* Tue Apr  8 2008 Richard Hughes <rhughes@redhat.com> - 1.1.0-4
 - Fix build on 64 bit machines - harder.
 
-* Mon Apr  8 2008 Richard Hughes <rhughes@redhat.com> - 1.1.0-3
+* Tue Apr  8 2008 Richard Hughes <rhughes@redhat.com> - 1.1.0-3
 - Fix build on 64 bit machines.
 
-* Mon Apr  8 2008 Richard Hughes <rhughes@redhat.com> - 1.1.0-2
+* Tue Apr  8 2008 Richard Hughes <rhughes@redhat.com> - 1.1.0-2
 - Actually do the build.
 
 * Mon Apr  7 2008 Matthias Clasen <mclasen@redhat.com> - 1.1.0-1
