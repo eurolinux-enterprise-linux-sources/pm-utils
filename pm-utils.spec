@@ -5,7 +5,7 @@ Name: pm-utils
 Summary: Power management utilities and scripts
 License: GPLv2
 Version: 1.4.1
-Release: 27%{?dist}
+Release: 24%{?dist}
 Group: System Environment/Base
 URL: http://pm-utils.freedesktop.org
 %ifnarch s390 s390x
@@ -25,7 +25,6 @@ Source0: http://pm-utils.freedesktop.org/releases/pm-utils-%{version}.tar.gz
 Source1: http://pm-utils.freedesktop.org/releases/pm-quirks-%{quirkdbver}.tar.gz
 
 Source23: pm-utils-bugreport-info.sh
-Source24: pm-utils-bugreport-info.sh.8
 
 # Use append instead of write for init_logfile (#660329)
 Patch0: pm-utils-1.4.1-init-logfile-append.patch
@@ -83,7 +82,6 @@ mkdir -p $RPM_BUILD_ROOT%{_localstatedir}/run/pm-utils/{locks,pm-suspend,pm-powe
 touch $RPM_BUILD_ROOT%{_localstatedir}/run/pm-utils/locks/{pm-suspend.lock,pm-powersave.lock}
 mkdir -p $RPM_BUILD_ROOT%{_localstatedir}/run/pm-utils/{pm-suspend,pm-powersave}/storage
 install -D -m 0755 %{SOURCE23} $RPM_BUILD_ROOT%{_sbindir}/pm-utils-bugreport-info.sh
-install -D -m 0644 %{SOURCE24} $RPM_BUILD_ROOT%{_mandir}/man8/pm-utils-bugreport-info.sh.8
 
 # Install quirks
 cp -r video-quirks $RPM_BUILD_ROOT%{_libdir}/pm-utils
@@ -134,16 +132,6 @@ rm -rf %{_localstatedir}/run/pm-utils/{pm-suspend,pm-powersave}/storage/*
 %{_libdir}/pkgconfig/pm-utils.pc
 
 %changelog
-* Fri Aug 15 2014 Jaroslav Škarvada <jskarvad@redhat.com> - 1.4.1-27
-- Added man page for pm-utils-bugreport-info.sh
-  Resolves: rhbz#948552
-
-* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 1.4.1-26
-- Mass rebuild 2014-01-24
-
-* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 1.4.1-25
-- Mass rebuild 2013-12-27
-
 * Mon Jul  1 2013 Jaroslav Škarvada <jskarvad@redhat.com> - 1.4.1-24
 - Minor man fixes
 
